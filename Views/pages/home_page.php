@@ -9,7 +9,7 @@ include_once '../style/header.php';
             <p class="font-italic">Encontre filmes incríveis e conecte-se com pessoas que compartilham seu gosto!</p>
         </div>
 
-        <hr class="bg-orange">
+        <hr style="background-color: orange">
 
         <section class="sessao-filmes mt-5">
             <h4 class="ml-2">Filmes em <b style="color: orange">Destaque</b></h4>
@@ -74,7 +74,7 @@ include_once '../style/header.php';
                 </div>
         </section>
 
-        <hr class="bg-orange">
+        <hr style="background-color: orange;">
 
         <div class="my-5">
             <h4>No <b style="color: orange">MovieMatch</b> você poderá...</h4>
@@ -82,48 +82,48 @@ include_once '../style/header.php';
                 <div class="col-md-4 mb-3">
                     <div class="card feature-card text-center">
                         <div class="card-body">
-                            <i class="fas fa-eye fa-2x mb-3"></i>
-                            <h5 class="card-title">Acompanhar todos os filmes que você já assistiu (ou começar a partir do dia em que se inscreveu)</h5>
+                            <i class="fas fa-eye fa-2x mb-3"></i><br>
+                            <a href="#" class="card-title" style="color: white; text-decoration: none; font-family: 'Montserrat', 'Times New Roman', Times, serif;">Acompanhar todos os filmes que você já assistiu e suas críticas</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <div class="card feature-card text-center">
                         <div class="card-body">
-                            <i class="fas fa-heart fa-2x mb-3"></i>
-                            <h5 class="card-title">Mostrar um pouco de amor pelos seus filmes, listas e críticas favoritas com seu like</h5>
+                            <i class="fas fa-heart fa-2x mb-3"></i><br>
+                            <a href="#" class="card-title" style="color: white; text-decoration: none; font-family: 'Montserrat', 'Times New Roman', Times, serif;">Mostrar um pouco de amor pelos seus filmes favoritos com seu like</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <div class="card feature-card text-center">
                         <div class="card-body">
-                            <i class="fas fa-pencil-alt fa-2x mb-3"></i>
-                            <h5 class="card-title">Escrever e compartilhar seus comentários e seguir amigos e outros membros para ler os deles</h5>
+                            <i class="fas fa-pencil-alt fa-2x mb-3"></i><br>
+                            <a href="#" class="card-title" style="color: white; text-decoration: none; font-family: 'Montserrat', 'Times New Roman', Times, serif;">Escrever e compartilhar seus comentários no nosso fórum de filmes</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <div class="card feature-card text-center">
                         <div class="card-body">
-                            <i class="fas fa-star fa-2x mb-3"></i>
-                            <h5 class="card-title">Avaliar cada filme em uma escala de 1 até 10 para registrar e compartilhar sua reação</h5>
+                            <i class="fas fa-star fa-2x mb-3"></i><br>
+                            <a href="#" class="card-title" style="color: white; text-decoration: none; font-family: 'Montserrat', 'Times New Roman', Times, serif;">Avaliar filmes e ver o que seus amigos acharam deles</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <div class="card feature-card text-center">
                         <div class="card-body">
-                            <i class="fas fa-calendar-alt fa-2x mb-3"></i>
-                            <h5 class="card-title">Conversar com pessoas com os mesmos gostos que você com a nossa ferramenta de match</h5>
+                            <i class="fas fa-calendar-alt fa-2x mb-3"></i><br>
+                            <a href="#" class="card-title" style="color: white; text-decoration: none; font-family: 'Montserrat', 'Times New Roman', Times, serif;">Conversar com pessoas com os mesmos gostos que você com a nossa ferramenta de match</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <div class="card feature-card text-center">
                         <div class="card-body">
-                            <i class="fas fa-th-large fa-2x mb-3"></i>
-                            <h5 class="card-title">Compartilhar listas de filmes sobre qualquer assunto e manter uma lista de filmes para ver depois</h5>
+                            <i class="fas fa-th-large fa-2x mb-3"></i><br>
+                            <a href="#" class="card-title" style="color: white; text-decoration: none; font-family: 'Montserrat', 'Times New Roman', Times, serif;">Criar listas de filmes para compartilhar com seus amigos</a>
                         </div>
                     </div>
                 </div>
