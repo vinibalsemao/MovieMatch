@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #1e232a;
+  background-color: #0d0f12;
   color: white;
 }
 
@@ -26,6 +26,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 50px;
+  border: none;
 }
 
 .carousel-control-prev-icon,
@@ -37,6 +38,7 @@ body {
 
 .sessao-filmes .card {
   margin: 10px;
+  border: none;
 }
 
 .footer {
@@ -45,7 +47,7 @@ body {
 }
 
 .feature-card {
-  background-color: #485a6b;
+  background-color: black;
   border: none;
   height: 100%;
   display: flex;
@@ -79,4 +81,265 @@ body {
 
 #link:hover {
   color: orange;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.pagination a {
+  text-decoration: none;
+  padding: 8px 12px;
+  color: #333;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.pagination .active a {
+  background-color: orange;
+  color: #fff;
+  border-color: orange;
+}
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.movie {
+  flex: 1 1 calc(25% - 20px); /* Adjusted to show 4 movies per row */
+  background-color: #010102;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.movie img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.movie-details {
+  margin-top: 10px;
+}
+
+a {
+  color: orange;
+  text-decoration: none;
+}
+
+a:hover {
+  color: orange;
+  text-decoration: none;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+.error-message {
+  color: #a1b0bd;
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+  margin-left: 30px;
+  display: block;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.actions .btn i {
+  margin-right: 5px;
+}
+
+.actions .btn input[type="checkbox"] {
+  display: none;
+}
+
+.actions .btn.avaliacao {
+  background-color: #ffc107;
+}
+
+.actions .btn.avaliacao input[type="checkbox"]:checked + i,
+.actions .btn.avaliacao input[type="checkbox"]:checked + i + span {
+  color: #a47b00;
+}
+
+
+.actions .btn.favorito {
+  background-color: red;
+}
+
+.actions .btn.salvar {
+  background-color: #007bff;
+}
+
+.actions .btn.salvar input[type="checkbox"]:checked + i,
+.actions .btn.salvar input[type="checkbox"]:checked + i + span {
+  color: blue;
+}
+
+.actions .btn.favorito input[type="checkbox"]:checked + i,
+.actions .btn.favorito input[type="checkbox"]:checked + i + span {
+  color: #8b0000;
+}
+
+.comment-section {
+  margin-top: 40px;
+}
+
+.comment-section h3 {
+  margin-bottom: 20px;
+}
+
+.comment {
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: black;
+  width: 1130px;
+}
+
+.comment .comment-meta {
+  font-size: 0.9em;
+}
+
+.comment .comment-meta span {
+  margin-right: 10px;
+}
+
+.related-movies {
+  margin-top: 50px;
+}
+
+.related-movies h3 {
+  margin-bottom: 20px;
+}
+
+.related-movies .movie {
+  flex: 1 1 calc(25% - 20px);
+  background-color: #010102;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.related-movies .movie img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.related-movies .movie h6 {
+  color: white;
+  margin-top: 10px;
+}
+
+.comment-section .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0;
+}
+
+.comment .btn input[type="checkbox"] {
+  display: none;
+}
+
+.comment-section .btn.like input[type="checkbox"]:checked + i,
+.comment-section .btn.like input[type="checkbox"]:checked + i + span {
+  color: orange;
+}
+
+.comment-section .btn.deslike input[type="checkbox"]:checked + i,
+.comment-section.btn.deslike input[type="checkbox"]:checked + i + span {
+  color: orange;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: orange;
+  text-decoration: none;
+}
+
+.perfil-usuario img {
+  width: 100%;
+  height: auto;
+  max-width: 250px;
+  border: none;
+}
+
+.perfil-usuario {
+  text-align: left;
+}
+
+.col-md-5 {
+  position: relative;
+}
+
+.descricao-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.descricao-texto {
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  position: absolute;
+  top: 250px;
+  left: 15px;
+}
+
+.error-message {
+  color: #a1b0bd;
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+  margin-left: 15px;
+  display: block;
 }

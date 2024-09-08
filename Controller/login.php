@@ -28,6 +28,7 @@ if (isset($_POST["submit"])) {
             $_SESSION['id_usuario'] = $user['id_usuario'];
             $_SESSION['nome'] = $user['nome'];
             $_SESSION['email'] = $user['email'];
+            $_SESSION['foto'] = $user['foto'];
             $_SESSION['sucesso'] = "Login realizado com sucesso!";
             header("Location: ../Views/pages/home_page.php");
         } else {

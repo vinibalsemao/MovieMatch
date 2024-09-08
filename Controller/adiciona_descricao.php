@@ -9,11 +9,9 @@ if (!isset($_SESSION['id_usuario'])) {
 
 $id_usuario = $_SESSION['id_usuario'];
 
-// Verifica se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nova_descricao = htmlspecialchars(trim($_POST['descricao']));
 
-    // Atualiza a descrição no banco de dados
     $sql_update = "UPDATE usuarios SET descricao = ? WHERE id_usuario = ?";
     $stmt_update = $conn->prepare($sql_update);
     $stmt_update->bind_param("si", $nova_descricao, $id_usuario);
@@ -28,6 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: ../Views/pages/perfil.php");
     exit();
 } else {
-    header("Location: ../Views/pages/adicionar_descricao.php");
+    header("Location: ../Views/pages/perfil.php");
     exit();
 }

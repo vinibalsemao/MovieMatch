@@ -1,5 +1,5 @@
 <?php
-include_once '../style/header.php';
+session_start();
 
 if (isset($_SESSION['id_usuario'])) {
     $_SESSION['erro'] = "Você já está logado!";
@@ -7,7 +7,14 @@ if (isset($_SESSION['id_usuario'])) {
     exit();
 }
 
+include_once '../style/header.php';
 ?>
+
+<style>
+    <?php
+    include_once '../style/input_style.css';
+    ?>
+</style>
 
 <body>
     <main class="container">
@@ -27,7 +34,7 @@ if (isset($_SESSION['id_usuario'])) {
                     </div>
 
                     <div class="style-form-input full">
-                        <input type="password" name="senha" id="senha"/>
+                        <input type="password" name="senha" id="senha" />
                         <label>Senha</label>
                     </div>
 

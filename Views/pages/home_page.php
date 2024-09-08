@@ -1,6 +1,50 @@
 <?php
+session_start();
+include '../../Model/api.php';
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$movies = fetchMovies($page);
+
+function fetchMovieTrailer($movieId)
+{
+    $apiKey = "daf1bcaad0c418fca4f175ca58a88177";
+    $url = "https://api.themoviedb.org/3/movie/{$movieId}/videos?api_key={$apiKey}&language=pt-BR";
+
+    $response = file_get_contents($url);
+    if ($response === FALSE) {
+        die("Erro ao acessar a API.");
+    }
+
+    $videos = json_decode($response, true)['results'];
+    foreach ($videos as $video) {
+        if ($video['type'] == 'Trailer' && $video['site'] == 'YouTube') {
+            return $video['key'];
+        }
+    }
+
+    return null;
+}
+
 include_once '../style/header.php';
 ?>
+<style>
+    #featuredTrailers {
+        scrollbar-color: black black;
+    }
+
+    #featuredTrailers::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    #featuredTrailers::-webkit-scrollbar-thumb {
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    #featuredTrailers::-webkit-scrollbar-track {
+        background: black;
+    }
+</style>
 
 <body>
     <main class="container">
@@ -12,69 +56,45 @@ include_once '../style/header.php';
         <hr style="background-color: orange">
 
         <section class="sessao-filmes mt-5">
-            <h4 class="ml-2">Filmes em <b style="color: orange">Destaque</b></h4>
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="ml-2">Filmes em <b style="color: orange">Destaque</b></h4>
+                <a href="filmes_populares.php" id="link">Ver todos</a>
+            </div>
             <div id="featuredMovies" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src="../images/movie1.jpg" class="card-img-top" alt="Movie 1">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src="../images/movie2.jpg" class="card-img-top" alt="Movie 2">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src="../images/movie3.jpg" class="card-img-top" alt="Movie 3">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src="../images/movie4.jpg" class="card-img-top" alt="Movie 4">
-                                </div>
+                    <?php
+                    $active = true;
+                    foreach ($movies['results'] as $index => $movie) :
+                        if ($index % 4 == 0) {
+                            echo ($active) ? '<div class="carousel-item active">' : '<div class="carousel-item">';
+                            $active = false;
+                            echo '<div class="row">';
+                        }
+                    ?>
+                        <div class="col-md-3">
+                            <div class="card mb-3">
+                                <img src="https://image.tmdb.org/t/p/w500<?= $movie['poster_path'] ?>" class="card-img-top" alt="<?= htmlspecialchars($movie['title']) ?>">
                             </div>
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src="../images/movie5.jpg" class="card-img-top" alt="Movie 5">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src="../images/movie6.jpg" class="card-img-top" alt="Movie 6">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src="../images/movie7.jpg" class="card-img-top" alt="Movie 7">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src="../images/movie8.jpg" class="card-img-top" alt="Movie 8">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#featuredMovies" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#featuredMovies" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <?php
+                        if (($index + 1) % 4 == 0 || ($index + 1) == count($movies['results'])) {
+                            echo '</div></div>';
+                        }
+                    endforeach;
+                    ?>
                 </div>
+                <a class="carousel-control-prev" href="#featuredMovies" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#featuredMovies" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </section>
 
-        <hr style="background-color: orange;">
+        <hr style="background-color: orange">
 
         <div class="my-5">
             <h4>No <b style="color: orange">MovieMatch</b> você poderá...</h4>
@@ -83,7 +103,7 @@ include_once '../style/header.php';
                     <div class="card feature-card text-center">
                         <div class="card-body">
                             <i class="fas fa-eye fa-2x mb-3"></i><br>
-                            <a href="#" class="card-title" style="color: white; text-decoration: none; font-family: 'Montserrat', 'Times New Roman', Times, serif;">Acompanhar todos os filmes que você já assistiu e suas críticas</a>
+                            <a href="perfil.php" class="card-title" style="color: white; text-decoration: none; font-family: 'Montserrat', 'Times New Roman', Times, serif;">Acompanhar todos os filmes que você já assistiu e suas críticas</a>
                         </div>
                     </div>
                 </div>
@@ -107,7 +127,7 @@ include_once '../style/header.php';
                     <div class="card feature-card text-center">
                         <div class="card-body">
                             <i class="fas fa-star fa-2x mb-3"></i><br>
-                            <a href="#" class="card-title" style="color: white; text-decoration: none; font-family: 'Montserrat', 'Times New Roman', Times, serif;">Avaliar filmes e ver o que seus amigos acharam deles</a>
+                            <a href="filmes_populares.php" class="card-title" style="color: white; text-decoration: none; font-family: 'Montserrat', 'Times New Roman', Times, serif;">Avaliar filmes e ver o que seus amigos acharam deles</a>
                         </div>
                     </div>
                 </div>
