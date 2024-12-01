@@ -115,8 +115,8 @@ while ($row = mysqli_fetch_assoc($resultAssistidos)) {
                         <b>E-mail:</b> <?= htmlspecialchars($user['email']) ?>
                         <br>
                         <b>Seguidores:</b> <a href="#" data-toggle="modal" data-target="#modalSeguidores"><?= $totalSeguidores ?></a>
-                        <br>
-                        <a href="../../Controller/promover_adm.php">Torne-se administrador</a>
+                        <!-- <br> -->
+                        <!-- <a href="../../Controller/promover_adm.php" style="color: orange">Torne-se administrador</a> -->
                     </p>
                 </div>
                 <div class="col-md-5 descricao-container">

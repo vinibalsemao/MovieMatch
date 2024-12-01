@@ -495,7 +495,7 @@ include_once '../style/header.php';
                     </form>
                 <?php else : ?>
                     <hr style="background-color: orange;">
-                    <div >
+                    <div>
                         Sentindo falta de algo? <a href="login.php" style="color:orange">faça login</a> para interagir com o filme.
                     </div>
                 <?php endif; ?>
@@ -615,18 +615,17 @@ include_once '../style/header.php';
                             <div class="comment-meta d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
                                     <a href="perfil_usuario.php?id_usuario=<?= $comment['usuario_id'] ?>">
-                                        <img src="../uploads/<?= htmlspecialchars($comment['foto'] ?? 'user.png') ?>" alt="Foto do Usuário" class="profile-image" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                        <img src="../uploads/<?= !empty($comment['foto']) ? htmlspecialchars($comment['foto']) : 'user.png' ?>" alt="Foto do Usuário" class="profile-image" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
                                         <span>
                                             <strong style="color: orange">
                                                 <?= htmlspecialchars($comment['nome_usuario']) ?>
+                                            </strong>
+                                        </span>
                                     </a>
-                                    </strong>
-                                    </span>
                                     -
                                     <span style="margin-left: 10px;"><?= date('d M Y', strtotime($comment['data'])) ?></span>
                                 </div>
-                                <?php
-                                if (isset($_SESSION['id_usuario']) && ($comment['usuario_id'] == $_SESSION['id_usuario'] || $_SESSION['admin'] == 1)) : ?>
+                                <?php if (isset($_SESSION['id_usuario']) && ($comment['usuario_id'] == $_SESSION['id_usuario'] || $_SESSION['admin'] == 1)) : ?>
                                     <div class="ml-auto">
                                         <a href="../../Controller/excluir_comentario.php?id=<?= $comment['id_comentario'] ?>&movieId=<?= $movieId ?>" class="fas fa-trash" title="Excluir comentário" style="color: grey;"></a>
                                     </div>
